@@ -1,0 +1,40 @@
+.container {
+    display: block;
+    position: relative;
+    padding-top: 23px;
+    margin-bottom: 32px;
+    max-width: 296px;
+    height: 179px;
+    width: 100%;
+    background-color: var(--lightgrey);
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.xcounter {
+    position: absolute;
+    top: 55px;
+    left: 200px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--placeholdergrey);
+}
+
+.down {
+    width: 100%;
+    padding: 9px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    background-color: var(--red);
+}
+
+.down div {
+    color: #fff;
+}

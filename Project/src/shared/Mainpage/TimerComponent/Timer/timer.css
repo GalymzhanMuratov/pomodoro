@@ -1,0 +1,134 @@
+.container {
+    height: 507px;
+
+}
+
+.title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.taskname {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.upperNeut, .upperAct, .upperBre {
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 40px;
+    color: #fff;
+}
+
+.upperNeut {
+    background-color: var(--grey);
+}
+
+.upperAct {
+    background-color: var(--red);
+}
+
+.upperBre {
+    background-color: var(--green);
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    max-height: 460px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--lightgrey);
+}
+
+.text, .textAct, .textBreak {
+    position: relative;
+    padding-right: 80px;
+    font-size: 150px;
+    font-weight: 200;
+    line-height: 179px;
+    text-align: center;
+}
+
+.textAct {
+    color: var(--red);
+}
+
+.textBreak {
+    color: var(--green)
+}
+
+.plus {
+
+    width: 49px;
+    height: 49px;
+    position: absolute;
+    top: calc((100% - 49px) /2);
+    right: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    font-size: 42px;
+    line-height: 1;
+    color: #fff;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: var(--grey);
+    transition: background-color var(--trs) ease;
+}
+
+.text:hover .plus {
+    background-color: var(--greenHover);
+}
+
+.textAct:hover .plus {
+    background-color: var(--greenHover);
+}
+
+.textBreak:hover .plus {
+    background-color: var(--greenHover);
+}
+
+.taskbody {
+    margin-bottom: 32px;
+}
+
+.taskbody2 {
+    color: var(--grey);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn {
+    margin-right: 25px;
+    padding: 19px 50px;
+    color: #fff;
+    background-color: var(--green);
+    transition: background-color var(--trs) ease;
+}
+
+.stopbtn {
+    padding: 17px 48px;
+    color: var(--grey);
+    border: 2px solid var(--grey);
+    transition: background-color var(--trs) ease;
+}
+
+.btn:hover {
+    background-color: var(--greenHover);
+}
+
+.stopbtn:hover {
+    border: 2px solid var(--red);
+    color: #fff;
+    background-color: var(--red);
+}

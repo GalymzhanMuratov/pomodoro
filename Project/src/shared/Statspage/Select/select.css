@@ -1,0 +1,66 @@
+.wrap {
+    position: relative;
+    width: 370px;
+    border: none;
+    background-color: var(--lightgrey);
+}
+
+.wrapped {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.1);
+
+}
+
+.optionList {
+    display: none;
+    transition: all var(--trs) ease;
+}
+
+.optionListAct {
+    display: block;
+    transition: all var(--trs) ease;
+}
+
+.select {
+    position: relative;
+}
+
+.select, .option {
+    width: 370px;
+    height: 55px;
+    padding: 19px 15px;
+    z-index: 5;
+    border: none;
+    background-color: var(--lightgrey);
+    transition: all var(--trs) ease;
+}
+
+.option {
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.option:first-child {
+    border-top: 1px solid #DEDEDE;
+}
+
+.select:hover, .option:hover {
+    background-color: var(--grey);
+}
+
+.arrow, .arrowUp {
+    width: 14px;
+    height: 7px;
+    position: absolute;
+    z-index: 5;
+    top: 20px;
+    right: 24px;
+    transition: transform 0.15s linear;
+}
+
+.arrowUp {
+    top: 27px;
+    transform: rotate(180deg);
+}

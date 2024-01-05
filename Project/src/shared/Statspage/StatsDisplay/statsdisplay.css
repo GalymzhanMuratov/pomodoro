@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.content, .contentfocus, .contentpausetime, .contentpauses {
+    display: flex;
+    width: 405px;
+    margin-right: 32px;
+    padding: 25px;
+    justify-content: space-between;
+}
+
+.content {
+    background-color: var(--lightgrey);
+}
+
+.content:last-child {
+    margin-right: 0;
+}
+
+.contentfocus {
+
+    background-color: #FFDDA9;
+}
+
+.contentpausetime {
+
+    background-color: #DFDCFE;
+}
+
+.contentpauses {
+    margin-right: 0;
+    background-color: #C5F1FF;
+}
+
+
+.title {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.stat {
+    font-size: 64px;
+    font-weight: 400;
+}

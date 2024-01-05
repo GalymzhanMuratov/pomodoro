@@ -1,0 +1,36 @@
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 22px 12px 56px;
+    z-index: 1;
+    height: 100%;
+    background-color: var(--lightgrey);
+}
+
+.wrap canvas {
+    z-index: 2;
+    align-self: flex-end;
+}
+
+.timelines {
+    position: relative;
+    padding-top: 83px;
+}
+
+.timeline {
+    display: block;
+    position: relative;
+    margin-bottom: 83px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: -868px;
+    width: 840px;
+    height: 0;
+    border-top: 1px solid var(--grey);
+}

@@ -1,0 +1,56 @@
+.title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.taskname {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.upper {
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 40px;
+    color: #fff;
+    background-color: var(--grey);
+}
+
+.main {
+    padding: 70px 177px;
+    height: 507px;
+    background-color: var(--lightgrey);
+}
+
+.timer {
+    position: relative;
+    font-size: 150px;
+    font-weight: 200;
+    line-height: 179px;
+}
+
+.timer::after {
+    content: '';
+    width: 49px;
+    height: 49px;
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+
+.btn {
+    padding: 50px 19px;
+    color: #fff;
+    background-color: var(--green);
+}
+
+.stopbtn {
+    padding: 48px 17px;
+    color: var(--grey);
+    border: 2px solid var(--grey);
+}
