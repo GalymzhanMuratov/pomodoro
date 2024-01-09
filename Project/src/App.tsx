@@ -10,15 +10,16 @@ import { MainPage } from "./shared/Mainpage";
 import { StatsPage } from "./shared/Statspage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function AppComponent() {
 
     const [mounted, setMounted] = useState(false)
-    const [isDark, setIsDark] = useState(false)
+
+    const [isDark, setIsDark] = useLocalStorage('dark', false)
 
     function themeSwitch() {
         setIsDark(!isDark)
-        console.log('TS:', isDark)
     }
 
     useEffect(() => {
