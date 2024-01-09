@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from './dropdown.css'
 import { GenericDropdown } from "../../../../../GenericDropdown";
 import { DropList } from "./DropList";
-import { MenuIcon } from "../../../../../Icons";
+import { EIcons, Icon } from "../../../../../Icons";
 
 type Coords = {
     left: number;
@@ -45,7 +45,7 @@ export function Dropdown({ myid, onEditClick }: DropdownProps) {
             const coords = getCoords();
             setCoords(coords);
         }}>
-            <GenericDropdown classname={styles.menuButton} button={<MenuIcon />}>
+            <GenericDropdown classname={styles.menuButton} button={<Icon name={EIcons.menu} />}>
                 {isDropdownOpen && coords && (
                     <DropList coords={coords} myid={myid} onEditClick={onEditClick} onClose={handleDropdownClose} />
                 )}

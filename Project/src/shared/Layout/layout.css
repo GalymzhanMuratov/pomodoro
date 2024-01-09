@@ -1,4 +1,5 @@
 .layout {
     max-width: 1280px;
     margin: 0 auto;
+    transition: background-color 0.25s ease-in-out;
 }

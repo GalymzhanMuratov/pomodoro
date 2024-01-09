@@ -1,5 +1,6 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import './main.global.css'
+import styles from './app.css'
 import { Header } from "./shared/Header/Header";
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,27 +14,41 @@ import { store } from "./store/store";
 function AppComponent() {
 
     const [mounted, setMounted] = useState(false)
+    const [isDark, setIsDark] = useState(false)
+
+    function themeSwitch() {
+        setIsDark(!isDark)
+        console.log('TS:', isDark)
+    }
 
     useEffect(() => {
         setMounted(true)
     }, [])
+
+    useEffect(() => {
+
+
+    }, [isDark])
 
     return (
         <Provider store={store} >
 
 
             {mounted && (
-                <BrowserRouter>
-                    <Header />
-                    <Layout>
-                        <Content>
-                            <Routes>
-                                <Route path="/" element={<MainPage />} ></Route>
-                                <Route path="/stats" element={<StatsPage totaltime={120} pausetime={10} pauses={2} day="Суббота" pomodors={2} />} ></Route>
-                            </Routes>
-                        </Content>
-                    </Layout>
-                </BrowserRouter>
+                <div className={styles.app} data-theme={isDark ? 'dark' : ''}>
+
+                    <BrowserRouter>
+                        <Header handleChange={themeSwitch} />
+                        <Layout>
+                            <Content>
+                                <Routes>
+                                    <Route path="/" element={<MainPage />} ></Route>
+                                    <Route path="/stats" element={<StatsPage totaltime={120} pausetime={10} pauses={2} day="Суббота" pomodors={2} />} ></Route>
+                                </Routes>
+                            </Content>
+                        </Layout>
+                    </BrowserRouter>
+                </div>
             )}
         </Provider>
 

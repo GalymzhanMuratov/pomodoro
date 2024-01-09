@@ -27,6 +27,7 @@ html {
 body {
     margin: 0;
     font-family: 'SF UI Display';
+    background-color: var(--white);
 }
 
 /**
@@ -392,7 +393,16 @@ template {
     --lightgrey: #F4F4F4;
     --placeholdergrey: #999999;
     --black: #333333;
+    --white: #ffffff;
     --trs: 0.3s;
+}
+
+[data-theme='dark'] {
+    --grey: #dddddd;
+    --lightgrey: #5c5b5b;
+    --placeholdergrey: #ffffff;
+    --black: #ffffff;
+    --white: #030303;
 }
 
 * {

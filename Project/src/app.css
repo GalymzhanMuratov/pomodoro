@@ -1,0 +1,5 @@
+.app {
+    height: 100dvh;
+    background-color: var(--white);
+    transition: background-color 0.25s ease-in-out;
+}

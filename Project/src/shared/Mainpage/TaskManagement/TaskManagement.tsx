@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './taskmanagement.css'
-import { BulletsIcon } from '../../Icons'
+import { EIcons, Icon } from '../../Icons'
 import { TaskList } from './TaskList'
 import { TaskFormContainer } from './TaskFormContainer'
 
@@ -11,9 +11,9 @@ export function TaskManagement() {
             <h2 className={styles.title}>Ура! Теперь можно начать работать:</h2>
             <div className={styles.wrap}>
                 <div className={styles.inline}>
-                    <BulletsIcon />
+                    <Icon name={EIcons.bullet} />
                 </div>
-                <p>
+                <div className={styles.desc}>
                     <div>
                         Выберите категорию и напишите название текущей задачи
                     </div>
@@ -29,7 +29,7 @@ export function TaskManagement() {
                     <div>
                         Продолжайте работать «помидор» за «помидором», пока задача не будут выполнена. Каждые 4 «помидора» делайте длинный перерыв (15-30 минут).
                     </div>
-                </p>
+                </div>
             </div>
             <TaskFormContainer />
             <TaskList />

@@ -1,3 +1,5 @@
+export * from './Icon'
+
 export * from './BulletsIcon'
 export * from './DeleteIcon'
 export * from './EditIcon'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './droplist.css'
 import ReactDOM from "react-dom";
-import { DeleteIcon, EditIcon, ZoominIcon, ZoomoutIcon } from "../../../../../../Icons";
+import { EIcons, Icon } from "../../../../../../Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addAmount, decreaseAmount, removeTask } from "../../../../../../../store/tasks/tasksSlice";
 import { RootState } from "../../../../../../../store/store";
@@ -97,7 +97,7 @@ export function DropList({ coords, myid, onClose, onEditClick }: DropListProps) 
                 <li >
                     <div className={styles.menuLinkDesc} onClick={addClick}>
                         <div>
-                            <ZoominIcon />
+                            <Icon name={EIcons.zoomin} />
                         </div>
                         Увеличить
                     </div>
@@ -105,7 +105,7 @@ export function DropList({ coords, myid, onClose, onEditClick }: DropListProps) 
                 <li>
                     <div className={styles.menuLinkDesc} onClick={decreaseClick} >
                         <div>
-                            <ZoomoutIcon />
+                            <Icon name={EIcons.zoomout} />
                         </div>
                         Уменьшить
                     </div>
@@ -113,7 +113,7 @@ export function DropList({ coords, myid, onClose, onEditClick }: DropListProps) 
                 <li>
                     <div className={styles.menuLinkDesc} onClick={editClick}>
                         <div>
-                            <EditIcon />
+                            <Icon name={EIcons.edit} />
                         </div>
                         Редактировать
                     </div>
@@ -121,7 +121,7 @@ export function DropList({ coords, myid, onClose, onEditClick }: DropListProps) 
                 <li>
                     <div className={styles.menuLinkDesc} onClick={removeClick}>
                         <div>
-                            <DeleteIcon />
+                            <Icon name={EIcons.delete} />
                         </div>
                         Удалить
                     </div>

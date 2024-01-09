@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from './select.css'
+import { EIcons, Icon } from "../../Icons";
 
 export function Select() {
     const [selectedOption, setSelectedOption] = useState("Эта неделя");
@@ -8,7 +9,7 @@ export function Select() {
 
     useEffect(() => {
         function handleClickOutside(event: any) {
-            //@ts-ignore
+            // @ts-ignore
             if (optionMenuRef.current && !optionMenuRef.current.contains(event.target)) {
                 setIsActive(false);
             }
@@ -38,9 +39,7 @@ export function Select() {
                 <div>
                     <div id="select" className={styles.select} onClick={handleSelectClick}>{selectedOption}</div>
                     <div className={isActive ? styles.arrowUp : styles.arrow}>
-                        <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 1L8 8L1 1" stroke="#B7280F" stroke-width="2" />
-                        </svg>
+                        <Icon name={EIcons.selectarrow} />
                     </div>
 
                 </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './pomodorocount.css'
-import { TomatoIcon } from "../../Icons";
-import { TomatoIcon2 } from "../../Icons/TomatoIcon2";
+import { EIcons, Icon } from "../../Icons";
+
 
 interface PomodoroCount {
     pomodors?: number
@@ -12,13 +12,13 @@ export function PomodoroCount({ pomodors = 0 }: PomodoroCount) {
         <div className={styles.container}>
             {pomodors === 0 && (
                 <div className={styles.content}>
-                    <TomatoIcon2 />
+                    <Icon name={EIcons.tomato2} />
                 </div>
             )}
 
             {pomodors > 0 && (
                 <div className={styles.content}>
-                    <TomatoIcon />
+                    <Icon name={EIcons.tomato} />
                     <p className={styles.xcounter}> x {pomodors}</p>
                     <div className={styles.down}>
                         <div>{pomodors} помидора </div>

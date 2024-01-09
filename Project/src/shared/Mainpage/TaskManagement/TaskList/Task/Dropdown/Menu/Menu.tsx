@@ -1,11 +1,11 @@
 import * as React from "react";
-import { MenuIcon } from "../../../../../../Icons/MenuIcon";
 import styles from './menu.css'
+import { EIcons, Icon } from "../../../../../../Icons";
 
 export function Menu() {
     return (
         <button className={styles.menuButton}>
-            <MenuIcon />
+            <Icon name={EIcons.menu} />
         </button>
     )
 }

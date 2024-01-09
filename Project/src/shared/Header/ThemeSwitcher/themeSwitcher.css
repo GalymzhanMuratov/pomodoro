@@ -1,0 +1,43 @@
+.toggleContainer {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+}
+
+.toggle {
+    visibility: hidden;
+}
+
+.toggle+label {
+    position: relative;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--red);
+}
+
+.toggle+label::before {
+    content: "";
+    height: 1em;
+    width: 1.6em;
+    border-radius: 1em;
+    background-color: var(--red);
+    margin-right: 0.5em;
+    transition: background-color 250ms ease-in-out;
+}
+
+.toggle+label::after {
+    content: "";
+    height: 0.8em;
+    width: 0.8em;
+    border-radius: 1em;
+    background-color: var(--redHover);
+    position: absolute;
+    left: 0.2em;
+    transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+.toggle:checked+label::after {
+    transform: translateX(50%);
+}

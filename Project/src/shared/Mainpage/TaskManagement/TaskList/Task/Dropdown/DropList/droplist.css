@@ -6,6 +6,10 @@
     background-color: #fff;
 }
 
+[data-theme='dark'] .menuItemsList {
+    background-color: var(--lightgrey);
+}
+
 .menuItem {
     width: 165px;
     display: flex;
