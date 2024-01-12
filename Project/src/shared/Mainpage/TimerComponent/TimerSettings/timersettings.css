@@ -1,0 +1,26 @@
+.container {
+    padding: 10px;
+    background-color: var(--lightgrey);
+}
+
+.title {
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--black)
+}
+
+.lastlabel {
+    margin-bottom: 16px;
+}
+
+.btn {
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--green);
+}
+
+.btn:hover {
+    background-color: var(--greenHover);
+}

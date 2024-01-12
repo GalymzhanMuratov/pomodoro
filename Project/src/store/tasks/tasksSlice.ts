@@ -1,16 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Task {
+type Task = {
     name: string;
     id: number;
     amount: number;
 }
 
-interface TaskState {
+type TaskState = {
     list: Task[];
 }
 
-const initialState: TaskState = { list: [] }
+const getInitialState = (): TaskState => {
+    let initialState: TaskState = { list: [] };
+    if (typeof window !== 'undefined') {
+        const storedState = localStorage.getItem('list');
+        if (storedState) {
+            try {
+                const parsedState = JSON.parse(storedState);
+                // Ensure the parsed state matches the expected structure
+                if (parsedState && Array.isArray(parsedState.list)) {
+                    initialState = parsedState;
+                }
+            } catch (error) {
+                console.error('Error parsing stored state:', error);
+            }
+        }
+    }
+    return initialState;
+};
+
+
+const initialState: TaskState = getInitialState()
 
 const tasksSlice = createSlice({
     name: 'tasks',
@@ -18,19 +38,23 @@ const tasksSlice = createSlice({
     reducers: {
         addTask(state, action) {
             state.list.push(action.payload)
+            localStorage.setItem('list', JSON.stringify(state))
         },
         editTask(state, action) {
             const { id, name } = action.payload;
             const taskToUpdate = state.list.find(task => task.id === id);
             if (taskToUpdate) {
                 taskToUpdate.name = name;
+                localStorage.setItem('list', JSON.stringify(state))
             }
         },
         removeTask(state, action) {
             state.list = state.list.filter(task => task?.id !== action.payload?.id)
+            localStorage.setItem('list', JSON.stringify(state))
         },
         addAmount(state, action) {
             state.list = state.list.map(task => task.id === action.payload.id ? { ...task, amount: task.amount += 1 } : task)
+            localStorage.setItem('list', JSON.stringify(state))
         },
         decreaseAmount(state, action) {
             const { id } = action.payload;
@@ -41,6 +65,7 @@ const tasksSlice = createSlice({
                     task.amount = 1;
                 } else {
                     task.amount -= 1;
+                    localStorage.setItem('list', JSON.stringify(state))
                 }
             }
         },
@@ -50,8 +75,10 @@ const tasksSlice = createSlice({
             if (task) {
                 if (task.amount <= 1) {
                     task.amount = 0;
+                    localStorage.setItem('list', JSON.stringify(state))
                 } else {
                     task.amount -= 1;
+                    localStorage.setItem('list', JSON.stringify(state))
                 }
             }
         }

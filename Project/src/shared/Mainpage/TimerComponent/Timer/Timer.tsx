@@ -3,16 +3,20 @@ import styles from './timer.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import { decreaseAmountAuto, removeTask } from "../../../../store/tasks/tasksSlice";
+import checkPageStatus from '../../../../../utils/checkpagestatus'
 
-
-interface TimerProps {
-    initseconds: number;
+type TimerProps = {
+    workMinutes: number;
+    breakMinutes: number;
 }
 
 type taskCycle = 'task1' | 'task2' | 'task3' | 'break1' | 'break2' | 'bigbreak'
 
-export function Timer({ initseconds = 1500 }: TimerProps) {
-
+export function Timer() {
+    const breakMinRedux = useSelector((state: RootState) => state.timersettings.breakMinutes)
+    const bigbreakMinRedux = useSelector((state: RootState) => state.timersettings.bigbreakMinutes)
+    const workMinRedux = useSelector((state: RootState) => state.timersettings.workMinutes)
+    const initseconds = workMinRedux * 60
     const taskslist = useSelector((state: RootState) => state.tasks.list)
     const current = taskslist[0]
 
@@ -21,7 +25,7 @@ export function Timer({ initseconds = 1500 }: TimerProps) {
     const [currentPom, setCurrentPom] = useState<number>(1)
     const [isActive, setActive] = useState(false);
     const [isTask, setTask] = useState<taskCycle>('task1');
-    const [minutes, setMinutes] = useState<number>(Math.floor(initseconds / 60));
+    const [minutes, setMinutes] = useState<number>(Number(workMinRedux));
     const [seconds, setSeconds] = useState<number>(initseconds % 60);
 
     function toggleTimer() {
@@ -49,6 +53,7 @@ export function Timer({ initseconds = 1500 }: TimerProps) {
         }
     }
 
+
     function resetTimer() {
         setActive(false);
 
@@ -56,39 +61,39 @@ export function Timer({ initseconds = 1500 }: TimerProps) {
             case 'task1': {
                 decreaseCurrent()
                 setTask('break1');
-                setMinutes(5);
+                setMinutes(breakMinRedux);
                 setSeconds(0);
                 break
             }
             case 'task2': {
                 decreaseCurrent()
                 setTask('break2');
-                setMinutes(5);
+                setMinutes(breakMinRedux);
                 setSeconds(0);
                 break
             }
             case 'task3': {
                 decreaseCurrent()
                 setTask('bigbreak');
-                setMinutes(15);
+                setMinutes(bigbreakMinRedux);
                 setSeconds(0);
                 break
             }
             case 'break1': {
                 setTask('task2');
-                setMinutes(25);
+                setMinutes(workMinRedux);
                 setSeconds(0);
                 break
             }
             case 'break2': {
                 setTask('task3');
-                setMinutes(25);
+                setMinutes(workMinRedux);
                 setSeconds(0);
                 break
             }
             case 'bigbreak': {
                 setTask('task1');
-                setMinutes(25);
+                setMinutes(workMinRedux);
                 setSeconds(0);
                 break
             }
@@ -102,6 +107,8 @@ export function Timer({ initseconds = 1500 }: TimerProps) {
             intervalId = setInterval(() => {
                 if (seconds === 0) {
                     if (minutes === 0) {
+                        checkPageStatus('Время вышло!')
+                        resetTimer()
                         clearInterval(intervalId);
                         return;
                     }
@@ -114,7 +121,7 @@ export function Timer({ initseconds = 1500 }: TimerProps) {
         }
 
         return () => clearInterval(intervalId);
-    }, [isActive, minutes, seconds]);
+    }, [isActive, minutes, seconds, breakMinRedux, workMinRedux]);
 
     useEffect(() => {
         if (current && current.amount === 0) {
