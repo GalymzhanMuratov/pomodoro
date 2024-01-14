@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import { useDispatch } from "react-redux";
 import { setBigBreak, setBreak, setWork } from "../../../../store/timersettings/timersettingsSlice";
+import { GenericBtn } from "../../../GenericBtn";
 
 type TTProps = {
     toggle: () => void;
@@ -70,11 +71,11 @@ export function TimerSettings({ toggle }: TTProps) {
                             onChange={changeBigBreakDur}
                         />
                     </div>
-
-
-                    <button className={styles.btn} onClick={toggle}>
-                        Сохранить настройки
-                    </button>
+                    <GenericBtn
+                        text="Сохранить настройки"
+                        classtype="editsave"
+                        onClick={toggle}
+                    />
                 </form>
             </div>
         </div>

@@ -1,0 +1,41 @@
+.button, .stop, .delete, .editsave {
+    align-self: flex-start;
+    padding: 19px 50px;
+    color: #fff;
+    background-color: var(--green);
+    transition-property: background-color, color;
+    transition-duration: var(--trs);
+    transition-timing-function: ease;
+}
+
+.stop {
+    margin-left: 25px;
+    padding: 17px 48px;
+    color: var(--grey);
+    border: 2px solid var(--grey);
+    background-color: transparent;
+}
+
+.delete {
+    margin-bottom: 10px;
+    font-weight: 500;
+    background-color: var(--red);
+}
+
+.editsave {
+    padding: 8px;
+}
+
+.button:hover, .editsave:hover {
+    background-color: var(--greenHover);
+}
+
+.stop:hover {
+    border: 2px solid var(--red);
+    color: #fff;
+    background-color: var(--red);
+}
+
+.delete:hover {
+    background-color: var(--redHover);
+}

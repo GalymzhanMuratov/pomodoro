@@ -3,6 +3,7 @@ import styles from './task.css'
 import { Dropdown } from "./Dropdown/Dropdown";
 import { useDispatch } from "react-redux";
 import { editTask } from "../../../../../store/tasks/tasksSlice";
+import { GenericBtn } from "../../../../GenericBtn";
 
 interface ITaskProps {
     name: string;
@@ -56,7 +57,11 @@ export function Task({ name, id, amount }: ITaskProps) {
                 <div className={styles.wrapper}>
                     <div className={styles.editwrap}>
                         <input className={styles.editinput} type="text" value={editName} onChange={handleNameChange}></input>
-                        <button className={styles.savebtn} onClick={handleSave}>Save</button>
+                        <GenericBtn
+                            text="Сохранить"
+                            classtype="editsave"
+                            onClick={handleSave}
+                        />
                     </div>
                 </div>
             )}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from './modal.css'
 import ReactDOM from "react-dom";
 import { EIcons, Icon } from "../Icons";
+import { GenericBtn } from "../GenericBtn";
 
 interface IModal {
     onClose?: () => void
@@ -35,7 +36,11 @@ export function Modal(props: IModal) {
             <div className={styles.overlay} id="modalPortal" ></div>
             <div className={styles.modalContent}>
                 <h3 className={styles.title}>Удалить задачу?</h3>
-                <button onClick={props.onDelete} className={styles.deletebtn}>Удалить</button>
+                <GenericBtn
+                    text="Удалить"
+                    classtype="delete"
+                    onClick={props.onDelete}
+                />
                 <div onClick={props.onClose} className={styles.cancel}>Отмена</div>
                 <div onClick={props.onClose} className={styles.cross}>
                     <Icon name={EIcons.cross} />

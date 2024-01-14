@@ -107,28 +107,3 @@
     flex-direction: row;
     justify-content: center;
 }
-
-.btn {
-    margin-right: 25px;
-    padding: 19px 50px;
-    color: #fff;
-    background-color: var(--green);
-    transition: background-color var(--trs) ease;
-}
-
-.stopbtn {
-    padding: 17px 48px;
-    color: var(--grey);
-    border: 2px solid var(--grey);
-    transition: background-color var(--trs) ease;
-}
-
-.btn:hover {
-    background-color: var(--greenHover);
-}
-
-.stopbtn:hover {
-    border: 2px solid var(--red);
-    color: #fff;
-    background-color: var(--red);
-}

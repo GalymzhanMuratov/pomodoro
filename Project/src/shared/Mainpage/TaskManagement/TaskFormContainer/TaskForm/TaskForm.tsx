@@ -3,6 +3,7 @@ import styles from './taskform.css'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useDispatch } from "react-redux";
 import { addTask } from "../../../../../store/tasks/tasksSlice";
+import { GenericBtn } from "../../../../GenericBtn";
 
 export function TaskForm() {
 
@@ -35,7 +36,10 @@ export function TaskForm() {
                     <label htmlFor="taskname"></label>
                     <ErrorMessage component='span' name="taskname" />
                     <Field className={styles.input} as="input" id="task" name="taskname" value={task} onChange={(e: any) => setTask(e.target.value)} placeholder="Название задачи" />
-                    <button className={styles.button} type="submit">Добавить</button>
+                    <GenericBtn
+                        text="Добавить"
+                        _type="submit"
+                    />
                 </Form>
 
             </Formik>

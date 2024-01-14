@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import { decreaseAmountAuto, removeTask } from "../../../../store/tasks/tasksSlice";
 import checkPageStatus from '../../../../../utils/checkpagestatus'
+import { GenericBtn } from "../../../GenericBtn";
 
 type TimerProps = {
     workMinutes: number;
@@ -143,8 +144,15 @@ export function Timer() {
                 </div>
                 <span className={styles.taskbody}><span className={styles.taskbody2}>Задача 1</span> - {current ? current.name : "Текущая задача"} </span>
                 <div className={styles.wrapper}>
-                    <button className={styles.btn} onClick={toggleTimer}>{isActive ? 'Пауза' : 'Старт'}</button>
-                    <button className={styles.stopbtn} onClick={resetTimer}>{isActive ? 'Пропустить' : 'Стоп'}</button>
+                    <GenericBtn
+                        text={isActive ? 'Пауза' : 'Старт'}
+                        onClick={toggleTimer}
+                    />
+                    <GenericBtn
+                        text={isActive ? 'Пропустить' : 'Стоп'}
+                        classtype="stop"
+                        onClick={resetTimer}
+                    />
                 </div>
             </div>
         </div>
