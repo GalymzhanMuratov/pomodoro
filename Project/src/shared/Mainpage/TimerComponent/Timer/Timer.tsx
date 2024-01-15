@@ -139,7 +139,7 @@ export function Timer() {
             </div>
             <div className={styles.wrap}>
                 <div className={isActive ? isTask === 'task1' ? styles.textAct : isTask === 'task2' ? styles.textAct : isTask === 'task3' ? styles.textAct : styles.textBreak : styles.text}>
-                    {minutes} : {seconds < 10 ? '0' + seconds : seconds}
+                    {minutes}:{seconds < 10 ? '0' + seconds : seconds}
                     <div onClick={addTime} className={styles.plus}> + </div>
                 </div>
                 <span className={styles.taskbody}><span className={styles.taskbody2}>Задача 1</span> - {current ? current.name : "Текущая задача"} </span>

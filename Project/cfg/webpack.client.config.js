@@ -59,5 +59,5 @@ module.exports = {
     ],
   },
   devtool: setupDevtool(),
-
+  plugins: [new CleanWebpackPlugin(), new HotModuleReplacementPlugin()]
 };
