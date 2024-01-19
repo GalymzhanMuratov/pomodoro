@@ -17,6 +17,7 @@
 }
 
 .delete {
+    align-self: center;
     margin-bottom: 10px;
     font-weight: 500;
     background-color: var(--red);
