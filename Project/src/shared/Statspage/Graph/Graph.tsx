@@ -32,10 +32,10 @@ type RGB = {
 const hovercolor: RGB = {
     red: 220,
     green: 62,
-    blue: 255
+    blue: 34
 }
 
-const usualcolor: RGB = {
+const defaultColor: RGB = {
     red: 234,
     green: 137,
     blue: 121
@@ -48,49 +48,11 @@ const Graph: React.FC<BarChartProps> = ({ data }) => {
     const [hoveredBarIndex, setHoveredBarIndex] = useState<number | null>(null);
     const animationFrameRef = useRef<number>(0);
 
-    const currentRed = useRef<number>(0)
-    const currentGreen = useRef<number>(0)
-    const currentBlue = useRef<number>(0)
-
-
-    // function smoothHover() {
-    //     currentRed.current = usualcolor.red
-    //     currentGreen.current = usualcolor.green
-    //     currentBlue.current = usualcolor.blue
-
-    //     if (currentRed.current === hovercolor.red) {
-
-    //     } else if (currentRed.current < hovercolor.red) {
-    //         currentRed.current++
-
-    //     } if (currentRed.current > hovercolor.red) {
-    //         currentRed.current--
-
-    //     }
-
-    //     if (currentGreen.current === hovercolor.green) {
-
-    //     } else if (currentGreen.current < hovercolor.green) {
-    //         currentGreen.current++
-
-    //     } if (currentGreen.current > hovercolor.green) {
-    //         currentGreen.current--
-
-    //     }
-
-    //     if (currentBlue.current === hovercolor.blue) {
-
-    //     } else if (currentBlue.current < hovercolor.blue) {
-    //         currentBlue.current++
-
-    //     } if (currentBlue.current > hovercolor.blue) {
-    //         currentBlue.current--
-
-    //     }
-
-    //     // requestAnimationFrame(smoothHover)
-    //     return `rgb(${currentRed.current},${currentGreen.current},${currentBlue.current} )`
-    // }
+    const [usualcolor, setUsualColor] = useState({
+        red: 234,
+        green: 137,
+        blue: 121
+    });
 
     const animate = () => {
         if (!canvasRef.current) return;
@@ -119,6 +81,29 @@ const Graph: React.FC<BarChartProps> = ({ data }) => {
             const barHeight = (value / maxValue) * chartHeight;
             const y = chartHeight - barHeight + 20;
 
+            if (hoveredBarIndex !== null && hoveredBarIndex == hoveredBarIndex) {
+                console.log('HovIndex:', hoveredBarIndex, 'index:', index)
+                if (usualcolor.green != hovercolor.green || usualcolor.red != hovercolor.red || usualcolor.blue != hovercolor.blue) {
+                    setUsualColor((usualcolor) => {
+                        return {
+                            red: usualcolor.red != hovercolor.red && usualcolor.red > hovercolor.red ? usualcolor.red - (Math.abs(defaultColor.red - hovercolor.red) / 200) : hovercolor.red,
+                            green: usualcolor.green != hovercolor.green && usualcolor.green > hovercolor.green ? usualcolor.green - (Math.abs(defaultColor.green - hovercolor.green) / 200) : hovercolor.green,
+                            blue: usualcolor.blue != hovercolor.blue && usualcolor.blue < hovercolor.blue ? usualcolor.blue + (Math.abs(defaultColor.blue - hovercolor.blue) / 200) : hovercolor.blue,
+                        }
+                    })
+                }
+            } else {
+                if (usualcolor.green != defaultColor.green || usualcolor.red != defaultColor.red || usualcolor.blue != defaultColor.blue) {
+                    setUsualColor((usualcolor) => {
+                        return {
+                            red: usualcolor.red != defaultColor.red && usualcolor.red < defaultColor.red ? usualcolor.red + (Math.abs(defaultColor.red - hovercolor.red) / 200) : defaultColor.red,
+                            green: usualcolor.green != defaultColor.green && usualcolor.green < defaultColor.green ? usualcolor.green + (Math.abs(defaultColor.green - hovercolor.green) / 200) : defaultColor.green,
+                            blue: usualcolor.blue != defaultColor.blue && usualcolor.blue > defaultColor.blue ? usualcolor.blue - (Math.abs(defaultColor.blue - hovercolor.blue) / 200) : defaultColor.blue,
+                        }
+                    })
+                }
+            }
+
             if (index === hoveredBarIndex || value === 0) {
                 if (value === 0) {
                     // Render a different bar for zero values
@@ -126,20 +111,20 @@ const Graph: React.FC<BarChartProps> = ({ data }) => {
                     ctx.fillRect(x, chartHeight + 15, barWidth - 32, 5);
                 } else {
 
-                    ctx.fillStyle = `rgb(${currentRed.current},${currentGreen.current},${currentBlue.current})`;
+                    ctx.fillStyle = `rgb(${usualcolor.red},${usualcolor.green},${usualcolor.blue})`;
 
 
                 }
             } else {
                 // Apply regular style for non-hovered non-zero bars
-                ctx.fillStyle = `rgb(${usualcolor.red},${usualcolor.green},${usualcolor.blue})`;
+                ctx.fillStyle = `rgb(${defaultColor.red},${defaultColor.green},${defaultColor.blue})`;
             }
 
 
             ctx.fillRect(x, y, barWidth - 32, barHeight);
 
             // Draw bar label
-            const labelColor = index === hoveredBarIndex ? `rgb(${hovercolor.red},${hovercolor.green},${hovercolor.blue} )` : '#999';
+            const labelColor = index === hoveredBarIndex ? `rgb(${usualcolor.red},${usualcolor.green},${usualcolor.blue} )` : '#999';
 
 
             // Draw x-axis label
@@ -148,28 +133,12 @@ const Graph: React.FC<BarChartProps> = ({ data }) => {
             ctx.font = '200 24px "SF UI Display"'
             ctx.textAlign = 'center';
             ctx.fillText(data.labels[index], x + (barWidth - 32) / 2, chartHeight + 50);
-
-            if (hoveredBarIndex !== null) {
-                // Update colors for smooth transition
-                if (currentRed.current !== hovercolor.red) {
-                    currentRed.current = currentRed.current < hovercolor.red ? Math.min(currentRed.current + 1, hovercolor.red) : Math.max(currentRed.current - 1, hovercolor.red);
-                }
-                if (currentGreen.current !== hovercolor.green) {
-                    currentGreen.current = currentGreen.current < hovercolor.green ? Math.min(currentGreen.current + 1, hovercolor.green) : Math.max(currentGreen.current - 1, hovercolor.green);
-                }
-                if (currentBlue.current !== hovercolor.blue) {
-                    currentBlue.current = currentBlue.current < hovercolor.blue ? Math.min(currentBlue.current + 1, hovercolor.blue) : Math.max(currentBlue.current - 1, hovercolor.blue);
-                }
-                // Request next frame
-                animationFrameRef.current = requestAnimationFrame(animate);
-            }
         });
 
     }
 
 
     useEffect(() => {
-
         animationFrameRef.current = requestAnimationFrame(animate);
 
         return () => {
@@ -177,10 +146,13 @@ const Graph: React.FC<BarChartProps> = ({ data }) => {
             cancelAnimationFrame(animationFrameRef.current);
         };
 
-    }, []);
+    }, [hoveredBarIndex, usualcolor]);
+
 
     useEffect(() => {
-
+        setUsualColor({
+            red: 234, green: 137, blue: 121
+        })
     }, [hoveredBarIndex])
 
     const handleMouseMove = (event: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
@@ -198,7 +170,9 @@ const Graph: React.FC<BarChartProps> = ({ data }) => {
     };
 
     const handleMouseLeave = () => {
+
         setHoveredBarIndex(null);
+
     };
 
     return (
