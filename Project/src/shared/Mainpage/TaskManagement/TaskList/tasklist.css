@@ -1,0 +1,10 @@
+.list {
+    margin-top: 15px;
+    margin-bottom: 19px;
+}
+
+.amount {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--placeholdergrey);
+}

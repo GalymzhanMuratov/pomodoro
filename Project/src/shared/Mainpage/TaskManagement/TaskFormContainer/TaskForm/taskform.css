@@ -1,0 +1,21 @@
+.form {
+    max-width: 370px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+.input {
+    border: none;
+    outline: none;
+    padding: 15px 19px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--black);
+    background-color: var(--lightgrey);
+}
+
+.input::placeholder {
+    color: var(--placeholdergrey);
+}

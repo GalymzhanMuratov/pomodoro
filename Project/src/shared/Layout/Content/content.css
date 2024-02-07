@@ -1,0 +1,24 @@
+/* .content {} */
+
+@media all and (min-width: 1024px) {
+    .content {
+        max-width: 947px;
+        margin: 0 auto;
+        background-color: var(--white);
+        transition: background-color 0.25s ease-in-out;
+
+    }
+}
+
+
+@media all and (min-width: 1540px) {
+    .content {
+        max-width: 1280px;
+    }
+}
+
+@media all and (min-width: 1600px) {
+    .content {
+        max-width: 1540px;
+    }
+}

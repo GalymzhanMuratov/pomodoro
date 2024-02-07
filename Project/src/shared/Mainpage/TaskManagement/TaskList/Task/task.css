@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    max-width: 370px;
+    padding: 19px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--lightgrey);
+    border-bottom: 1px solid var(--lightgrey);
+    font-weight: 300;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.amount {
+    display: block;
+    padding: 4px 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--grey)
+}
+
+.neutralwrap {
+    display: flex;
+    max-width: 370px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* edit */
+
+.editwrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editinput {
+    padding: 8px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    color: #333333;
+}

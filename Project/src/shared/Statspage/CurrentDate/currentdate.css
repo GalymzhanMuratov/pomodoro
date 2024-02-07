@@ -1,0 +1,19 @@
+.container {
+    display: block;
+    padding: 25px;
+    margin-bottom: 32px;
+    max-width: 296px;
+    height: 260px;
+    width: 100%;
+    background-color: var(--lightgrey);
+}
+
+.title {
+    margin-bottom: 14px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.red {
+    color: var(--red);
+}
